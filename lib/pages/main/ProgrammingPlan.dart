@@ -150,7 +150,8 @@ class _ProgrammingPlanState extends State<ProgrammingPlan> {
                                                 TextStyle(color: Colors.black),
                                           ),
                                         ),
-                                        //  onTap: ,
+
+                                        ///onTap: ,
                                       ),
                                       Text(
                                         "هدیه آسمانی",
