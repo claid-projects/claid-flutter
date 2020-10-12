@@ -1,8 +1,8 @@
-import 'package:claidflutter/pages/main/ProgrammingPlan.dart';
-import 'package:claidflutter/pages/main/home.dart';
-import 'package:claidflutter/pages/main/reports.dart';
+import 'package:claidflutter/pages/programming_plan/ProgrammingPlan.dart';
+import 'package:claidflutter/pages/home/home.dart';
+import 'package:claidflutter/pages/reports/reports.dart';
 
-import 'package:claidflutter/pages/main/settings.dart';
+import 'package:claidflutter/pages/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 import 'package:claidflutter/constants.dart';

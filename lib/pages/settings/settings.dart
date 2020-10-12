@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../components/nest_selector.dart';
-import 'main_const.dart';
-import '../../components/app_bar.dart';
 
 final List<MaterialColor> _parentColors = [
   Colors.deepOrange,
@@ -11,15 +8,15 @@ final List<MaterialColor> _parentColors = [
   Colors.purple,
 ];
 
-class Home extends StatefulWidget {
-  Home({Key key, this.onClick}) : super(key: key);
+class Settings extends StatefulWidget {
+  Settings({Key key, this.onClick}) : super(key: key);
   final VoidCallback onClick;
 
   @override
-  _HomeState createState() => _HomeState();
+  _SettingsState createState() => _SettingsState();
 }
 
-class _HomeState extends State<Home> {
+class _SettingsState extends State<Settings> {
   var parentCount = 2;
   var childCount = 10;
   var _direction = Axis.vertical;
@@ -72,31 +69,31 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar(
-        itemType: ItemType.home,
-        onClick: widget.onClick,
-        bottomView: PreferredSize(
-          child: NestSelector(
-            mainColor: Colors.white,
-            clickChild: (count) {
-              setState(() {
-                childCount = count;
-              });
-            },
-            clickParent: (count) {
-              setState(() {
-                parentCount = count;
-              });
-            },
-            clickDirection: (direction) {
-              setState(() {
-                _direction = direction;
-              });
-            },
-          ),
-          preferredSize: Size(0.0, 150.0),
-        ),
-      ),
+      // appBar: TopAppBar(
+      //   itemType: ItemType.settings,
+      //   onClick: widget.onClick,
+      //   //   bottomView: PreferredSize(
+      //   // child: NestSelector(
+      //   //   mainColor: Colors.white,
+      //   //   clickChild: (count) {
+      //   //     setState(() {
+      //   //       childCount = count;
+      //   //     });
+      //   //   },
+      //   //   clickParent: (count) {
+      //   //     setState(() {
+      //   //       parentCount = count;
+      //   //     });
+      //   //   },
+      //   //   clickDirection: (direction) {
+      //   //     setState(() {
+      //   //       _direction = direction;
+      //   //     });
+      //   //   },
+      //   // ),
+      //   // preferredSize: Size(0.0, 150.0),
+      //   //  ),
+      // ),
       body: Container(
         constraints: BoxConstraints.expand(),
         child: _buildParent(),
