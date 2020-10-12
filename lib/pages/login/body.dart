@@ -1,3 +1,4 @@
+import 'package:claidflutter/localization/demo_localization.dart';
 import 'package:flutter/material.dart';
 import 'background.dart';
 import 'package:claidflutter/pages/Signup/signup_page.dart';
@@ -38,7 +39,7 @@ class Body extends StatelessWidget {
               onChanged: (value) {},
             ),
             RoundedButton(
-              text: "LOGIN",
+              text: DemoLocalizations.of(context).getTranslatedValue('login'),
               press: () {},
             ),
             SizedBox(height: size.height * 0.03),

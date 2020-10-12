@@ -1,12 +1,38 @@
+import 'package:claidflutter/components/language.dart';
+import 'package:claidflutter/main.dart';
 import 'package:flutter/material.dart';
-import 'package:claidflutter/pages/Login/login_page.dart';
+// import 'package:claidflutter/pages/Login/login_page.dart';
 import 'package:claidflutter/pages/Signup/signup_page.dart';
 import 'package:claidflutter/pages/Welcome/background.dart';
 import 'package:claidflutter/components/rounded_button.dart';
 import 'package:claidflutter/constants.dart';
+import 'package:claidflutter/pages/main/main_page.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:claidflutter/localization/demo_localization.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  Body({Key key}) : super(key: key);
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  void _changeLanguage(Language language) {
+    Locale _temp;
+    switch (language.languageCode) {
+      case 'fa':
+        _temp = Locale(language.languageCode, 'IR');
+        break;
+      case 'en':
+        _temp = Locale(language.languageCode, 'US');
+        break;
+      default:
+        _temp = Locale(language.languageCode, 'IR');
+    }
+    MyApp.setLocate(context, _temp);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -16,8 +42,37 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Align(
+                alignment: Alignment.topRight,
+                child: DropdownButton(
+                  onChanged: (Language language) {
+                    _changeLanguage(language);
+                  },
+                  underline: SizedBox(),
+                  icon: Icon(
+                    Icons.language,
+                    color: Colors.blue,
+                    size: 36.0,
+                  ),
+                  items: Language.languageList()
+                      .map<DropdownMenuItem<Language>>(
+                          (lang) => DropdownMenuItem(
+                              value: lang,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Text(lang.flag),
+                                  Text(
+                                    lang.name,
+                                    style: TextStyle(fontSize: 30),
+                                  ),
+                                ],
+                              )))
+                      .toList(),
+                )),
             Text(
-              "WELCOME TO EDU",
+              DemoLocalizations.of(context).getTranslatedValue('welcome'),
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: size.height * 0.05),
@@ -27,20 +82,20 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
-              text: "LOGIN",
+              text: DemoLocalizations.of(context).getTranslatedValue('login'),
               press: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return MainPage();
                     },
                   ),
                 );
               },
             ),
             RoundedButton(
-              text: "SIGN UP",
+              text: DemoLocalizations.of(context).getTranslatedValue('sign up'),
               color: kPrimaryLightColor,
               textColor: Colors.black,
               press: () {
