@@ -1,76 +1,50 @@
+import 'package:claidflutter/localization/demo_localization.dart';
+import 'package:claidflutter/models/ProgramPlanModel.dart';
+import 'package:claidflutter/models/TimeModel.dart';
 import 'package:flutter/material.dart';
 
-final List<MaterialColor> lessons = [
-  Colors.deepOrange,
-  Colors.green,
-  Colors.brown,
-  Colors.indigo,
-  Colors.purple,
-];
+enum Lessons {
+  Quran,
+  Reiazi,
+  Farsi,
+  Motaleat,
+  Dini1,
+  Dini2,
+  Dini3,
+  Negaresh,
+  Olom
+}
+
+
+List classBells = ["زنگ اول شنبه","زنگ دوم شنبه","زنگ سوم شنبه","زنگ چهارم شنبه"];
 
 class ProgrammingPlan extends StatefulWidget {
-  ProgrammingPlan({Key key, this.onClick}) : super(key: key);
+  ProgrammingPlan({Key key, this.onClick, this.pmm,this.localization}) : super(key: key);
   final VoidCallback onClick;
-
+  final  ProgramPlanModel  pmm;
+  final DemoLocalizations localization;
   @override
-  _ProgrammingPlanState createState() => _ProgrammingPlanState();
+  _ProgrammingPlanState createState() => _ProgrammingPlanState(this.pmm,this.localization);
 }
 
 class _ProgrammingPlanState extends State<ProgrammingPlan> {
-  var parentCount = 5;
-  var childCount = 4;
-  // var _direction = Axis.vertical;
+  _ProgrammingPlanState( ProgramPlanModel  pmm,DemoLocalizations localization) {
+    this.pmm = pmm;
+    this.localization = localization;
+  }
 
-  // Widget _buildParent() {
-  //   var _height = 140.0;
-  //   var _width = 80.0;
-  //   return ListView.builder(
-  //     itemBuilder: (context, index) {
-  //       return Container(
-  //         constraints: _direction == Axis.vertical
-  //             ? BoxConstraints.tightForFinite(height: _height)
-  //             : BoxConstraints.tightForFinite(width: _width),
-  //         alignment: AlignmentDirectional.centerStart,
-  //         child: _buildChild(index, _height, _width),
-  //       );
-  //     },
-  //     itemCount: parentCount,
-  //     scrollDirection: _direction,
-  //   );
-  // }
 
-  // Widget _buildChild(parentIndex, height, width) {
-  //   return ListView.builder(
-  //     itemBuilder: (context, index) {
-  //       var i = index % 5 + 4;
-  //       i *= 100;
-  //       return SizedBox(
-  //         width: width,
-  //         height: height,
-  //         child: Container(
-  //           color: _parentColors[parentIndex % 5][i],
-  //           margin: EdgeInsets.all(1.0),
-  //           alignment: AlignmentDirectional.center,
-  //           child: Text(
-  //             "$index",
-  //             style: TextStyle(
-  //               color: Colors.white,
-  //               fontWeight: FontWeight.w700,
-  //             ),
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //     itemCount: childCount,
-  //     scrollDirection:
-  //         _direction == Axis.vertical ? Axis.horizontal : Axis.vertical,
-  //   );
-  // }
+  ProgramPlanModel  pmm ;
+  DemoLocalizations localization;
+
+
+
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Directionality(
-        // add this
+      // add this
         textDirection: TextDirection.rtl, // set this property
         child: DataTable(
           columns: const <DataColumn>[
@@ -114,89 +88,22 @@ class _ProgrammingPlanState extends State<ProgrammingPlan> {
                             fontStyle: FontStyle.italic, fontSize: 10)),
                     onTap: () {}),
                 DataCell(
-                    Text('انتخاب',
+                    Text(classBells[0],
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontSize: 10)), onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return Dialog(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20.0)), //this right here
-                          child: Container(
-                            height: 400,
-                            child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  TextField(
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText:
-                                            'درس مورد نظر را انتخاب کنید'),
-                                  ),
-                                  Container(
-                                      child: Column(
-                                    children: <Widget>[
-                                      GestureDetector(
-                                        child: Container(
-                                          child: Text(
-                                            "آموزش قرآن",
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          ),
-                                        ),
-                                        onTap: () {
-                                          print("تست");
-                                        },
-                                      ),
-                                      Text(
-                                        "هدیه آسمانی",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "فارسی",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "نگارش فارسی",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "ریاضی",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "علوم تجربی",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "مطالعات اجتماعی",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "ضمیمه هدیه های آسمانی(ویژه اهل سنت)",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                      Text(
-                                        "ضمیمه هدیه های آسمانی(ویژه اقلیت های دینی)",
-                                        style: TextStyle(color: Colors.black),
-                                      ),
-                                    ],
-                                  )),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      });
+
+
+
+                  TimeModel tm = new TimeModel("8:00", "9:15", "");
+                  List<TimeModel> ltm = new List<TimeModel>();
+                  ltm.add(tm);
+                  ProgramPlanModel programPlan = new ProgramPlanModel(1,ltm);
+                  pmm=programPlan;
+                  showDialog(pmm);
                 }),
                 DataCell(
-                    Text('انتخاب',
+                    Text('زنگ دوم شنبه',
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
                     onTap: () {}),
@@ -245,7 +152,7 @@ class _ProgrammingPlanState extends State<ProgrammingPlan> {
               cells: <DataCell>[
                 DataCell(Text('دوشنبه',
                     style:
-                        TextStyle(fontStyle: FontStyle.italic, fontSize: 10))),
+                    TextStyle(fontStyle: FontStyle.italic, fontSize: 10))),
                 DataCell(
                     Text('انتخاب',
                         style: TextStyle(
@@ -329,4 +236,53 @@ class _ProgrammingPlanState extends State<ProgrammingPlan> {
           ],
         ));
   }
+
+
+  void showDialog( ProgramPlanModel  pmm) {
+
+    showGeneralDialog(
+      barrierLabel: "Barrier",
+      barrierDismissible: true,
+      barrierColor: Colors.black.withOpacity(0.5),
+      transitionDuration: Duration(milliseconds: 700),
+      context: context,
+      pageBuilder: (_, __, ___) {
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 300,
+            child:  Column(
+                children: <Widget>[
+                  Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          backgroundImage: ExactAssetImage('assets/books/quran.png'),
+
+                        ),
+                        Text("قرآن",style: TextStyle(color: Colors.black45,fontFamily: "IranSans"),)
+
+                      ])
+                ]
+            ),
+            margin: EdgeInsets.only(bottom: 50, left: 12, right: 12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(40),
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (_, anim, __, child) {
+        return SlideTransition(
+          position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim),
+          child: child,
+        );
+      },
+    );
+  }
+
+
+
 }
+
+
