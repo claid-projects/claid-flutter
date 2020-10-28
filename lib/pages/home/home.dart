@@ -37,7 +37,7 @@ int timeLineItem = 4;
             ),
           ),
         constraints: BoxConstraints.expand(),
-        child:SingleChildScrollView( child:Column(
+         child:Column(
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(top:20,bottom: 20,left: 10,right: 10),
@@ -72,7 +72,7 @@ int timeLineItem = 4;
                         blurRadius: 5.0,
                       ),]
                     ),
-                  child:Wrap(
+                  child:SingleChildScrollView( child:Wrap(
                     children: <Widget>[
                       for (var i =0;i<timeLineItem;i++)
                         Container(
@@ -82,11 +82,11 @@ int timeLineItem = 4;
                   ),
                 ),
 
-
+              )
 
    ],
 
- )
+
         )
 
 
