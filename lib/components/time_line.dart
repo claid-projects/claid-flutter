@@ -34,15 +34,13 @@ class TimeLine extends StatelessWidget {
           constraints: const BoxConstraints(
             minHeight: 161.5,
           ),
-            child: CardTimeLine(state,url),
+            child: CardTimeLine(state,url,"تعلیمات اجتماعی"),
         ),
           startChild: Container(
             margin: EdgeInsets.only(left: 20,top: 65),
             child: Column(children: <Widget>[
               Text(startTime),
               Text(endTime,style: TextStyle( color: Colors.black45),)
-
-
             ],),
         ),
         )

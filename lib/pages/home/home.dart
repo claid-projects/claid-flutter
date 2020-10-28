@@ -25,8 +25,8 @@ int timeLineItem = 4;
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Container(
-          decoration: BoxDecoration(
+      body:Container(
+        decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [
                   Colors.cyan[200],
@@ -37,10 +37,9 @@ int timeLineItem = 4;
             ),
           ),
         constraints: BoxConstraints.expand(),
-        child: Column(
+        child:SingleChildScrollView( child:Column(
             children: <Widget>[
-              Container
-                (
+              Container(
                 margin: EdgeInsets.only(top:20,bottom: 20,left: 10,right: 10),
 
                 child: Row(
@@ -65,7 +64,6 @@ int timeLineItem = 4;
                 ),
               ),
 
-
               Container(
                   decoration: new BoxDecoration(color: Colors.white,
                     borderRadius: BorderRadius.only(topLeft:Radius.circular(30),topRight:Radius.circular(30)),
@@ -89,7 +87,7 @@ int timeLineItem = 4;
    ],
 
  )
-
+        )
 
 
 
