@@ -1,7 +1,9 @@
 import 'package:claidflutter/localization/demo_localization.dart';
+import 'package:claidflutter/models/LessonModel.dart';
 import 'package:claidflutter/models/ProgramPlanModel.dart';
 import 'package:claidflutter/models/TimeModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 enum Lessons {
   Quran,
@@ -16,37 +18,51 @@ enum Lessons {
 }
 
 
-List classBells = ["زنگ اول شنبه","زنگ دوم شنبه","زنگ سوم شنبه","زنگ چهارم شنبه"];
+List Saturday = ["زنگ اول شنبه","زنگ دوم شنبه","زنگ سوم شنبه","زنگ چهارم شنبه"];
+ int saturday1 =1;
+List Sunday = ["زنگ اول یکشنبه","زنگ دوم یکشنبه","زنگ سوم یکشنبه","زنگ چهارم یکشنبه"];
+List Monday = ["زنگ اول دوشنبه","زنگ دوم دوشنبه","زنگ سوم دوشنبه","زنگ چهارم دوشنبه"];
+List Tuesday = ["زنگ اول سه شنبه","زنگ دوم سه شنبه","زنگ سوم سه شنبه","زنگ چهارم سه شنبه"];
+List Wednesday = ["زنگ اول چهارشنبه","زنگ دوم چهارشنبه","زنگ سوم چهارشنبه","زنگ چهارم چهارشنبه"];
+
 
 class ProgrammingPlan extends StatefulWidget {
-  ProgrammingPlan({Key key, this.onClick, this.pmm,this.localization}) : super(key: key);
+
+  ProgrammingPlan({Key key, this.onClick, this.pmm,this.localization,this.lessonItems}) : super(key: key);
   final VoidCallback onClick;
   final  ProgramPlanModel  pmm;
   final DemoLocalizations localization;
+   List<LessonModel> lessonItems=List<LessonModel>();
   @override
-  _ProgrammingPlanState createState() => _ProgrammingPlanState(this.pmm,this.localization);
+  _ProgrammingPlanState createState() => _ProgrammingPlanState(this.pmm,this.localization,this.lessonItems);
 }
 
 class _ProgrammingPlanState extends State<ProgrammingPlan> {
-  _ProgrammingPlanState( ProgramPlanModel  pmm,DemoLocalizations localization) {
-    this.pmm = pmm;
+  _ProgrammingPlanState( ProgramPlanModel  pmm,DemoLocalizations localization,List<LessonModel> lessonItems) {
+
+
     this.localization = localization;
+      fechItems();
   }
 
 
-  ProgramPlanModel  pmm ;
   DemoLocalizations localization;
+  List<LessonModel> lessonItems=List<LessonModel>();
 
 
 
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
     return Directionality(
-      // add this
+
         textDirection: TextDirection.rtl, // set this property
-        child: DataTable(
+        child:
+
+        Container(
+            margin: EdgeInsets.only(top: 30),
+            child:DataTable(
           columns: const <DataColumn>[
             DataColumn(
               label: Text(
@@ -83,192 +99,298 @@ class _ProgrammingPlanState extends State<ProgrammingPlan> {
             DataRow(
               cells: <DataCell>[
                 DataCell(
-                    Text('شنبه',
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                  Text('شنبه',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic, fontSize: 10)),
+                ),
                 DataCell(
-                    Text(classBells[0],
+                    Text(Saturday[0],
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontSize: 10)), onTap: () {
 
+                  for (var i in lessonItems) {
+                    i.Day = 1;
+                    i.Ring=1;
+                  }
 
-
-                  TimeModel tm = new TimeModel("8:00", "9:15", "");
-                  List<TimeModel> ltm = new List<TimeModel>();
-                  ltm.add(tm);
-                  ProgramPlanModel programPlan = new ProgramPlanModel(1,ltm);
-                  pmm=programPlan;
-                  showDialog(pmm);
+                  showDialog(saturday1,lessonItems);
                 }),
                 DataCell(
-                    Text('زنگ دوم شنبه',
+                    Text(Saturday[1],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 1;
+                        i.Ring=2;
+                      }
+                      showDialog(saturday1,lessonItems);
+
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Saturday[2],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+
+                      for (var i in lessonItems) {
+                        i.Day = 1;
+                        i.Ring=3;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Saturday[3],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+
+                      for (var i in lessonItems) {
+                        i.Day = 1;
+                        i.Ring=4;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(
-                    Text('یکشنبه',
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                  Text('یکشنبه',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic, fontSize: 10)),
+                ),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Sunday[0],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 2;
+                        i.Ring=1;
+                      }
+                      showDialog(saturday1,lessonItems);
+
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Sunday[1],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 2;
+                        i.Ring=2;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Sunday[2],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 2;
+                        i.Ring=3;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Sunday[3],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 2;
+                        i.Ring=4;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
               ],
             ),
             DataRow(
               cells: <DataCell>[
-                DataCell(Text('دوشنبه',
+                DataCell(Text("دوشنبه",
                     style:
                     TextStyle(fontStyle: FontStyle.italic, fontSize: 10))),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Monday[0],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 3;
+                        i.Ring=1;
+                      }
+                      showDialog(saturday1,lessonItems);}),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Monday[1],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {                      for (var i in lessonItems) {
+                      i.Day = 3;
+                      i.Ring=2;
+                    }
+                    showDialog(saturday1,lessonItems);}),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Monday[2],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 3;
+                        i.Ring=3;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Monday[3],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 3;
+                        i.Ring=4;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(
-                    Text('سه شنبه',
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                  Text('سه شنبه',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic, fontSize: 10)),
+                ),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Tuesday[0],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+
+                      for (var i in lessonItems) {
+                        i.Day = 4;
+                        i.Ring=1;
+                      }
+                      showDialog(saturday1,lessonItems);
+
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Tuesday[1],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {                      for (var i in lessonItems) {
+                      i.Day = 4;
+                      i.Ring=2;
+                    }
+                    showDialog(saturday1,lessonItems);}),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Tuesday[2],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 4;
+                        i.Ring=3;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Tuesday[3],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 4;
+                        i.Ring=4;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
               ],
             ),
             DataRow(
               cells: <DataCell>[
                 DataCell(
-                    Text('چهارشنبه',
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                  Text('چهارشنبه',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic, fontSize: 10)),
+                ),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Wednesday[0],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 5;
+                        i.Ring=1;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Wednesday[1],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 5;
+                        i.Ring=2;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Wednesday[2],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 5;
+                        i.Ring=3;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
                 DataCell(
-                    Text('انتخاب',
+                    Text(Wednesday[3],
                         style: TextStyle(
                             fontStyle: FontStyle.italic, fontSize: 10)),
-                    onTap: () {}),
+                    onTap: () {
+                      for (var i in lessonItems) {
+                        i.Day = 5;
+                        i.Ring=4;
+                      }
+                      showDialog(saturday1,lessonItems);
+                    }),
               ],
             ),
           ],
-        ));
+        ))
+
+
+
+
+
+    );
   }
 
 
-  void showDialog( ProgramPlanModel  pmm) {
+  void showDialog(int saturday1,List<LessonModel>lessonItems) {
 
     showGeneralDialog(
-      barrierLabel: "Barrier",
+      barrierLabel: "لیست دروس",
       barrierDismissible: true,
       barrierColor: Colors.black.withOpacity(0.5),
       transitionDuration: Duration(milliseconds: 700),
       context: context,
       pageBuilder: (_, __, ___) {
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: 300,
-            child:  Column(
-                children: <Widget>[
-                  Row(
-                      children: <Widget>[
-                        CircleAvatar(
-                          backgroundImage: ExactAssetImage('assets/books/quran.png'),
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: GridView.count(crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 15,
 
-                        ),
-                        Text("قرآن",style: TextStyle(color: Colors.black45,fontFamily: "IranSans"),)
-
-                      ])
-                ]
-            ),
-            margin: EdgeInsets.only(bottom: 50, left: 12, right: 12),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(40),
-            ),
+          children: List.generate(lessonItems.length, (int position){
+            return generateItems(saturday1,context,lessonItems[position]);
+          })
           ),
         );
       },
@@ -281,8 +403,99 @@ class _ProgrammingPlanState extends State<ProgrammingPlan> {
     );
   }
 
+void fechItems(){
+
+
+   LessonModel quran = new LessonModel("قرآن","https://www.roshd.ir/Portals/18/Images/jeld/ghoran3.jpg", "سوم دبستان",0,0);
+   lessonItems.add(quran);
+   LessonModel olom = new LessonModel("علوم","https://www.roshd.ir/Portals/18/Images/jeld/oloom3.jpg", "سوم دبستان",0,0);
+   lessonItems.add(olom);
+   LessonModel negaresh = new LessonModel("نگارش","https://www.roshd.ir/Portals/18/Images/jeld/farsi03.jpg", "سوم دبستان",0,0);
+   lessonItems.add(negaresh);
+   LessonModel dini = new LessonModel("هدیه های آسمانی","https://www.roshd.ir/Portals/18/Images/jeld/hedyehaye-aseman-03.jpg", "سوم دبستان",0,0);
+   lessonItems.add(dini);
+   LessonModel farsi = new LessonModel("فارسی","https://www.roshd.ir/Portals/18/Images/jeld/farsi03.jpg", "سوم دبستان",0,0);
+   lessonItems.add(farsi);
+   LessonModel varzesh = new LessonModel("ورزش","https://www.roshd.ir/Portals/18/Images/jeld/03-tarbiatbadani-1.jpg", "سوم دبستان",0,0);
+   lessonItems.add(varzesh);
+   LessonModel motaleat = new LessonModel("مطالعات","https://www.roshd.ir/Portals/18/Images/jeld/motaleate-ejtemaiee-03.jpg", "سوم دبستان",0,0);
+   lessonItems.add(motaleat);
+   LessonModel riyazi = new LessonModel("ریاضی","https://www.roshd.ir/Portals/18/Images/jeld/riyazi3.jpg", "سوم دبستان",0,0);
+   lessonItems.add(riyazi);
+
+}
+
+
+  Card generateItems(int classTime,BuildContext context,LessonModel item){
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(30)),
+
+      ),
+      elevation: 4,
+      child:Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            InkWell(
+
+
+                child:Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: new DecorationImage(
+                        fit: BoxFit.fill,
+                        image: new NetworkImage(
+                            item.Image)
+                    ),
+
+                  ),
+
+                ),
+                onTap:(){
+
+                  switch(classTime) {
+                    case 1: {
+                      setState(() {
+                        Saturday[0]=item.Title;
+                      });
+
+                    }
+                    break;
+
+                    case 2: {
+                      setState(() {
+                        Saturday[1]=item.Title;
+                      });
+
+                    }
+                    break;
+
+                    default: {
+                      Saturday[0]=item.Title;
+                    }
+                    break;
+                  }
+
+
+                  Navigator.of(context, rootNavigator: true).pop();
+                }
+            ),
+            Text(item.Title),
+            Text(item.Class)
+
+          ],
+
+        ),
+      ),
+
+    );
+  }
 
 
 }
+
 
 

@@ -15,12 +15,10 @@ class MainBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        title: 'Flutter Demo',
-        theme: new ThemeData(
-          primaryColor: kPrimaryColor,
-        ),
+
+
         home: new MyHomePage(
-            title: DemoLocalizations.of(context).getTranslatedValue('claid'),
+
             localization: DemoLocalizations.of(context)));
   }
 }
@@ -47,9 +45,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+
       body: _itemBody(curItemType),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

@@ -26,6 +26,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^0.18.0
+  timeline_tile: ^1.0.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
@@ -70,10 +71,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-     - family: IranSans
-       fonts:
-         - asset: fonts/IRANSansWeb.ttf
+
   #
   #         style: italic
   #   - family: Trajan Pro
