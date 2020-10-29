@@ -38,19 +38,13 @@ class ProgrammingPlan extends StatefulWidget {
 }
 
 class _ProgrammingPlanState extends State<ProgrammingPlan> {
+
   _ProgrammingPlanState( ProgramPlanModel  pmm,DemoLocalizations localization,List<LessonModel> lessonItems) {
-
-
     this.localization = localization;
       fechItems();
   }
-
-
   DemoLocalizations localization;
   List<LessonModel> lessonItems=List<LessonModel>();
-
-
-
 
   @override
   Widget build(BuildContext context) {

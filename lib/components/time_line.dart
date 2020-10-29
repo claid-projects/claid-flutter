@@ -2,18 +2,26 @@
 
 
 import 'package:claidflutter/components/CardTimeLine.dart';
+import 'package:claidflutter/models/ClassModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 
 
-class TimeLine extends StatelessWidget {
-  String startTime;
-  String endTime;
-  int state ;
-  String url ;
-  TimeLine(this.startTime,this.endTime,this.state,this.url);
+class TimeLine extends StatefulWidget {
+
+    TimeLine(this.classModel);
+    final ClassModel classModel ;
+
+  @override
+  _TimeLineState createState() => _TimeLineState();
+
+}
+
+class _TimeLineState extends State<TimeLine> {
+
+
   @override
   Widget build(BuildContext context) {
     return Container
@@ -21,31 +29,29 @@ class TimeLine extends StatelessWidget {
         child:TimelineTile(
         alignment: TimelineAlign.manual,
         //  isFirst: true,
-          indicatorStyle: const IndicatorStyle(
+          indicatorStyle:  IndicatorStyle(
             width: 20,
-            color: Colors.purple,
+            color: widget.classModel.color,
           ),
-          beforeLineStyle: const LineStyle(
-            color: Colors.purple,
-            thickness: 6,
+          beforeLineStyle:  LineStyle(
+            color: Colors.grey[300],
+            thickness: 5,
           ),
         lineXY: 0.2,
          endChild: Container(
-          constraints: const BoxConstraints(
-            minHeight: 161.5,
+          constraints:  BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height*0.2,
           ),
-            child: CardTimeLine(state,url,"تعلیمات اجتماعی"),
+            child: CardTimeLine(widget.classModel),
         ),
           startChild: Container(
             margin: EdgeInsets.only(left: 20,top: 65),
             child: Column(children: <Widget>[
-              Text(startTime),
-              Text(endTime,style: TextStyle( color: Colors.black45),)
+              Text(widget.classModel.start),
+              Text(widget.classModel.end,style: TextStyle( color: Colors.black45),)
             ],),
         ),
         )
       );
 }
-
-
 }
