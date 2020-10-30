@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 
 const BOTTOM_TITLES = ['خانه', 'گزارشات', 'برنامه کلاسی', 'تنظیمات'];
 const BOTTOM_ICONS = [
-  Icons.home,
-  Icons.assessment,
-  Icons.calendar_today,
-  Icons.settings,
+  IconData(59322),
+  IconData(58808),
+  IconData(58915),
+  IconData(59846),
 ];
 const BAR_ICONS = [
   Icons.filter_1,
@@ -25,7 +25,6 @@ const BAR_BACK_COLORS = [
 enum ItemType {
   home,
   reports,
-
   programmingPlan,
   settings
 }

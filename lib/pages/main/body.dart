@@ -1,3 +1,4 @@
+import 'package:claidflutter/components/fab_bottom_app_bar.dart';
 import 'package:claidflutter/pages/programming_plan/ProgrammingPlan.dart';
 import 'package:claidflutter/pages/home/home.dart';
 import 'package:claidflutter/pages/reports/reports.dart';
@@ -47,47 +48,67 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return Scaffold(
 
       body: _itemBody(curItemType),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: _bottomItems(),
-        onTap: _selectItem,
+      // bottomNavigationBar: BottomAppBar(
+      //   type: BottomNavigationBarType.fixed,
+      //   items: _bottomItems(),
+      //   onTap: _selectItem,
+      //   notchedShape: CircularNotchedRectangle(),
+      // ),
+      bottomNavigationBar: FABBottomAppBar(
+
+        color: Colors.grey,
+        selectedColor: Colors.red,
+        notchedShape: CircularNotchedRectangle(),
+        onTabSelected:  _selectItem,
+        items:
+        [
+          FABBottomAppBarItem(iconData: Icons.home, text: 'خانه'),
+          FABBottomAppBarItem(iconData: Icons.assessment, text: 'گزارشات'),
+          FABBottomAppBarItem(iconData: Icons.calendar_today, text: 'برنامه کلاسی'),
+          FABBottomAppBarItem(iconData: Icons.settings, text: 'تنظیمات'),
+        ],
+
+
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: new FloatingActionButton(
         onPressed: () {
           _settingModalBottomSheet(context);
         },
+        tooltip: 'Increment',
+
         backgroundColor: kPrimaryColor,
+        elevation: 2.0,
         child: new Icon(Icons.play_arrow),
       ),
     );
   }
 
-  List<BottomNavigationBarItem> _bottomItems() {
-    return curGroup == 0
-        ? []
-        : [
-            _bottomItem(ItemType.home),
-            _bottomItem(ItemType.reports),
-            _bottomItem(ItemType.programmingPlan),
-            _bottomItem(ItemType.settings),
-          ];
-  }
-
-  BottomNavigationBarItem _bottomItem(ItemType type) {
-    return BottomNavigationBarItem(
-      icon: Icon(
-        BOTTOM_ICONS[type.index],
-        color: _itemColor(type),
-      ),
-      title: Text(
-        BOTTOM_TITLES[type.index],
-        style: TextStyle(
-          color: _itemColor(type),
-        ),
-      ),
-    );
-  }
+  // List<BottomNavigationBarItem> _bottomItems() {
+  //   return curGroup == 0
+  //       ? []
+  //       : [
+  //     _bottomItem(ItemType.home),
+  //     _bottomItem(ItemType.reports),
+  //     _bottomItem(ItemType.programmingPlan),
+  //     _bottomItem(ItemType.settings),
+  //   ];
+  // }
+  //
+  // BottomNavigationBarItem _bottomItem(ItemType type) {
+  //   return BottomNavigationBarItem(
+  //     icon: IconData(
+  //       BOTTOM_ICONS[type.index],
+  //       color: _itemColor(type),
+  //     ),
+  //     title: Text(
+  //       BOTTOM_TITLES[type.index],
+  //       style: TextStyle(
+  //         color: _itemColor(type),
+  //       ),
+  //
+  //   );
+  // }
 
   Widget _itemBody(ItemType type) {
     switch (type) {
