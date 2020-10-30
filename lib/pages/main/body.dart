@@ -98,13 +98,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         return Reports(onClick: _changeGroup);
 
       case ItemType.programmingPlan:
-        return ProgrammingPlan(onClick: _changeGroup);
+        return ProgrammingPlan();
 
       case ItemType.settings:
         return Settings(onClick: _changeGroup);
 
       default:
-        return ProgrammingPlan(onClick: _changeGroup);
+        return ProgrammingPlan();
     }
   }
 

@@ -24,8 +24,8 @@ class SquareButton extends StatelessWidget {
       children: <Widget>[
         SizedBox(
 
-          width: 40.0,
-          height: 40.0,
+          width: 60.0,
+          height: 60.0,
           child:Container(
             decoration: new BoxDecoration(
                 boxShadow: [BoxShadow(
