@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
 
                    Container(
                 margin: EdgeInsets.only(top:20,bottom: 20,left: 10,right: 10),
-                height: 100,
+                height: MediaQuery.of(context).size.height*0.125,
                child:
 
                 Row(
