@@ -53,7 +53,10 @@ class _TimeTableBodyState extends State<TimeTableBody> {
                       decoration: BoxDecoration(
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.all(Radius.circular(1.0))),
-                      child: Icon(Icons.access_alarms,color: Colors.blue,)),
+                      child: Icon(
+                        Icons.access_alarms,
+                        color: Colors.blue,
+                      )),
                   for (var i = 0; i < sessions.length; i++)
                     Container(
                         height: 50,
@@ -103,7 +106,7 @@ class _TimeTableBodyState extends State<TimeTableBody> {
                             color: Colors.blue,
                             textColor: Colors.blue,
                             onPressed: () {
-                              showDialog(sessions[s].Order, lessons);
+                              showDialog(lessons);
                             },
                             borderSide: BorderSide(
                               color: Colors.blue, //Color of the border
@@ -160,7 +163,7 @@ class _TimeTableBodyState extends State<TimeTableBody> {
           0,
           0),
       LessonModel(
-          "مطالعات",
+          "مطالعات اجتماعی",
           "https://www.roshd.ir/Portals/18/Images/jeld/motaleate-ejtemaiee-03.jpg",
           "سوم دبستان",
           0,
@@ -174,7 +177,7 @@ class _TimeTableBodyState extends State<TimeTableBody> {
     ];
   }
 
-  void showDialog(int day, List<LessonModel> lessonItems) {
+  void showDialog(List<LessonModel> lessonItems) {
     showGeneralDialog(
       barrierLabel: "لیست دروس",
       barrierDismissible: true,
@@ -184,12 +187,10 @@ class _TimeTableBodyState extends State<TimeTableBody> {
       pageBuilder: (_, __, ___) {
         return Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.grey[200],Colors.white],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight
-            )
-          ),
+              gradient: LinearGradient(
+                  colors: [Colors.grey[200], Colors.white],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight)),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: GridView.count(
@@ -197,7 +198,7 @@ class _TimeTableBodyState extends State<TimeTableBody> {
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 15,
                 children: List.generate(lessonItems.length, (int position) {
-                  return ListCard(day, context, lessonItems[position]);
+                  return ListCard(context, lessonItems[position]);
                 })),
           ),
         );
@@ -211,8 +212,7 @@ class _TimeTableBodyState extends State<TimeTableBody> {
     );
   }
 
-//
-  Card ListCard(int classTime, BuildContext context, LessonModel item) {
+  Card ListCard(BuildContext context, LessonModel item) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),

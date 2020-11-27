@@ -8,13 +8,22 @@ class SquareButton extends StatelessWidget {
   final String label;
   final Icon icon;
   final Color color1;
+  final double opacity;
+  final double offsetDX;
+  final double offsetDY;
   SquareButton({
     @required this.label,
     @required this.icon,
     @required this.color1,
+    @required this.opacity,
+    @required this.offsetDX,
+    @required this.offsetDY,
   })  : assert(label != null),
         assert(icon != null),
-        assert(color1 != null)
+        assert(color1 != null),
+        assert(opacity != null),
+        assert(offsetDX != null),
+        assert(offsetDY != null)
   ;
 
   @override
@@ -29,8 +38,8 @@ class SquareButton extends StatelessWidget {
           child:Container(
             decoration: new BoxDecoration(
                 boxShadow: [BoxShadow(
-                  color: Colors.black26.withOpacity(0.4),
-                  offset: Offset(0, 3),
+                  color: Colors.black26.withOpacity(opacity),
+                  offset: Offset(offsetDX, offsetDY),
                   spreadRadius: 1,
                   blurRadius: 30.0,
 

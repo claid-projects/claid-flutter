@@ -158,19 +158,31 @@ class HomeHeaderAction extends StatelessWidget {
                   icon: Icon(
                     Icons.notifications,
                   ),
-                  color1: Colors.green.shade500),
+                  color1: Colors.green.shade500,
+                opacity: 0.4,
+                offsetDX: 0,
+                offsetDY: 3,),
               SquareButton(
                   label: "حضور و غیاب",
                   icon: Icon(Icons.account_box),
-                  color1: Colors.purple.shade500),
+                  color1: Colors.purple.shade500,
+                opacity: 0.4,
+                offsetDX: 0,
+                offsetDY: 3,),
               SquareButton(
                   label: "محتوا",
                   icon: Icon(Icons.content_paste),
-                  color1: Colors.pink.shade500),
+                  color1: Colors.pink.shade500,
+                opacity: 0.4,
+                offsetDX: 0,
+                offsetDY: 3,),
               SquareButton(
                   label: "تایم لاین",
                   icon: Icon(Icons.timeline),
-                  color1: Colors.amber.shade500)
+                  color1: Colors.amber.shade500,
+                opacity: 0.4,
+                offsetDX: 0,
+                offsetDY: 3,)
             ],
           ),
         )

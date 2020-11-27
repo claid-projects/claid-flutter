@@ -6,10 +6,11 @@ import 'package:flutter/material.dart';
 
 class FlutterDescriptionChips extends StatefulWidget {
 
-  FlutterDescriptionChips(this.label);
+  FlutterDescriptionChips(this.label,this.fontSize,this.backgroundColor);
 
   String label;
-
+  double fontSize;
+  Color backgroundColor;
 
   @override
   _FlutterDescriptionChipsState createState() => _FlutterDescriptionChipsState();
@@ -27,10 +28,10 @@ class _FlutterDescriptionChipsState extends State<FlutterDescriptionChips> {
             label: Text(
               widget.label,
               style: TextStyle(
-                  color: Colors.black,fontSize: 10
+                  color: Colors.black,fontSize: widget.fontSize
               ),
             ),
-            backgroundColor: Colors.grey[200],
+            backgroundColor: widget.backgroundColor,
 
 
             padding: EdgeInsets.all(2.0),

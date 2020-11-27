@@ -28,10 +28,9 @@ class _CardTimeLineState extends State<CardTimeLine> {
               tileMode: TileMode.clamp),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.4),
-              blurRadius: 7.0,
-              offset: Offset(4,4)
-            ),
+                color: Colors.grey.withOpacity(0.4),
+                blurRadius: 7.0,
+                offset: Offset(4, 4)),
           ]),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -74,10 +73,16 @@ class _CardTimeLineState extends State<CardTimeLine> {
                 Row(
                   children: <Widget>[
                     for (int i = 0; i < widget.classModel.tags.length; i++)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 5.0),
-                        child:
-                            FlutterDescriptionChips(widget.classModel.tags[i]),
+                      Wrap(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5.0),
+                            child: FlutterDescriptionChips(
+                                widget.classModel.tags[i],
+                                10,
+                                Colors.grey[200]),
+                          ),
+                        ],
                       ),
                   ],
                 )
@@ -91,11 +96,14 @@ class _CardTimeLineState extends State<CardTimeLine> {
                     child: Column(
                       children: <Widget>[
                         if (widget.classModel.status == 3)
-                          FlutterChips(3, "اتمام کلاس", Colors.green),
+                          FlutterChips(
+                              "اتمام کلاس", Colors.green, Icons.done_all),
                         if (widget.classModel.status == 2)
-                          FlutterChips(2, "شروع شده", Colors.blue),
+                          FlutterChips(
+                              "شروع شده", Colors.blue, Icons.play_arrow),
                         if (widget.classModel.status == 1)
-                          FlutterChips(1, "شروع نشده", Colors.grey)
+                          FlutterChips(
+                              "شروع نشده", Colors.grey, Icons.access_time)
                       ],
                     )))
           ],
