@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 
 class SquareButton extends StatelessWidget {
+  final Function onPressed;
   final String label;
   final Icon icon;
   final Color color1;
@@ -12,13 +13,15 @@ class SquareButton extends StatelessWidget {
   final double offsetDX;
   final double offsetDY;
   SquareButton({
+    @required this.onPressed,
     @required this.label,
     @required this.icon,
     @required this.color1,
     @required this.opacity,
     @required this.offsetDX,
     @required this.offsetDY,
-  })  : assert(label != null),
+  }):
+        assert(label != null),
         assert(icon != null),
         assert(color1 != null),
         assert(opacity != null),
@@ -32,7 +35,6 @@ class SquareButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         SizedBox(
-
           width: 60.0,
           height: 60.0,
           child:Container(
@@ -47,7 +49,7 @@ class SquareButton extends StatelessWidget {
             child: CupertinoButton(
               padding: EdgeInsets.zero,
               borderRadius: BorderRadius.circular(20.0),
-              onPressed: () {},
+              onPressed: onPressed,
               color: Color(0xFFFFFFFF),
               child: Icon(icon.icon,color:color1, size: 26.0,),
             ),
@@ -57,7 +59,6 @@ class SquareButton extends StatelessWidget {
           height: 8.0,
         ),
         Container(
-
           width: 60.0,
           height: 20.0,
           child: Center(
@@ -70,4 +71,6 @@ class SquareButton extends StatelessWidget {
       ],
     );
   }
+
+
 }

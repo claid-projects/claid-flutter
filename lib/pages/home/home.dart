@@ -3,6 +3,7 @@ import 'package:claidflutter/components/InnerShadow.dart';
 import 'package:claidflutter/components/square_button.dart';
 import 'package:claidflutter/components/time_line.dart';
 import 'package:claidflutter/models/ClassModel.dart';
+import 'package:claidflutter/pages/attendance/attendance.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -67,8 +68,7 @@ class _HomeState extends State<Home> {
                         for (var i = 0; i < classList.length; i++)
                           Container(child: TimeLine(classList[i]))
                       ],
-                    )
-                )
+                    ))
               ],
             ),
           )),
@@ -144,45 +144,62 @@ class HomeHeaderAction extends StatelessWidget {
           ),
         ),
         Container(
-
-          margin: EdgeInsets.only(
-              top: 16, bottom: 10, left: 10, right: 10),
-
+          margin: EdgeInsets.only(top: 16, bottom: 10, left: 10, right: 10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               SquareButton(
-                  label: "اعلان ها",
-                  icon: Icon(
-                    Icons.notifications,
-                  ),
-                  color1: Colors.green.shade500,
+                label: "اعلان ها",
+                icon: Icon(
+                  Icons.notifications,
+                ),
+                color1: Colors.green.shade500,
                 opacity: 0.4,
                 offsetDX: 0,
-                offsetDY: 3,),
+                offsetDY: 3,
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CalenderAttendance()),
+                  )
+                },
+              ),
               SquareButton(
-                  label: "حضور و غیاب",
-                  icon: Icon(Icons.account_box),
-                  color1: Colors.purple.shade500,
+                label: "حضور و غیاب",
+                icon: Icon(Icons.account_box),
+                color1: Colors.purple.shade500,
                 opacity: 0.4,
                 offsetDX: 0,
-                offsetDY: 3,),
+                offsetDY: 3,
+                onPressed: () => {
+
+                },
+              ),
               SquareButton(
-                  label: "محتوا",
-                  icon: Icon(Icons.content_paste),
-                  color1: Colors.pink.shade500,
+                label: "محتوا",
+                icon: Icon(Icons.content_paste),
+                color1: Colors.pink.shade500,
                 opacity: 0.4,
                 offsetDX: 0,
-                offsetDY: 3,),
+                offsetDY: 3,
+                onPressed: () => {
+
+                },
+              ),
               SquareButton(
-                  label: "تایم لاین",
-                  icon: Icon(Icons.timeline),
-                  color1: Colors.amber.shade500,
+                label: "تایم لاین",
+                icon: Icon(Icons.timeline),
+                color1: Colors.amber.shade500,
                 opacity: 0.4,
                 offsetDX: 0,
-                offsetDY: 3,)
+                offsetDY: 3,
+                onPressed: () => {
+
+                },
+              )
             ],
           ),
         )

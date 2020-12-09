@@ -64,7 +64,6 @@ class TimeLineBodyState extends State<TimeLineBody> {
                     Container(child: TimeLine(classList[i]))
                 ],
               )
-
           ]),
         ));
   }

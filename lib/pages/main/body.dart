@@ -285,18 +285,12 @@ void _settingModalBottomSheet(context) {
                 title: new Text('شروع درس جدید'),
                 onTap: () => {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LessonSelection()))
-
                 },
               )
             ],
           ),
         );
       });
-
-
-
-
-
 }
 
 
