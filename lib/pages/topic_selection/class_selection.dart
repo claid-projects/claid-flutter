@@ -33,15 +33,11 @@ class ClassSelection extends StatefulWidget {
 
 class _ClassSelectionState extends State<ClassSelection> {
   PersianDate persianDate = PersianDate(format: "yyyy/mm/dd  \n DD  , d  MM  ");
-  String _datetime = '';
-  String _format = 'yyyy-mm-dd';
-  String _value = '';
-  String _valuePiker = '';
   DateTime selectedDate = DateTime.now();
   ScrollController _scrollController = new ScrollController();
   int _visable = 1;
   BuildContext context;
-bool _textVisible = true;
+
   @override
   void initState() {
     super.initState();

@@ -40,13 +40,16 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => new _MyHomePageState(this.localization);
 }
+
 List<LessonModel> lessons;
+
 List sessions = [
   Session(1, "زنگ اول", "08:00", "08:45"),
   Session(2, "زنگ دوم", "09:15", "10:00"),
   Session(3, "زنگ سوم", "10:30", "11:15"),
   Session(4, "زنگ چهارم", "11:45", "12:30")
 ];
+
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   var curItemType = ItemType.home;
   var curGroup = 1;
@@ -54,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   _MyHomePageState(DemoLocalizations localization) {
     this.localization = localization;
   }
-
 
   DemoLocalizations localization;
 
@@ -65,20 +67,12 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     loadLessons();
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       body: _itemBody(curItemType),
-      // bottomNavigationBar: BottomAppBar(
-      //   type: BottomNavigationBarType.fixed,
-      //   items: _bottomItems(),
-      //   onTap: _selectItem,
-      //   notchedShape: CircularNotchedRectangle(),
-      // ),
+
       bottomNavigationBar: FABBottomAppBar(
 
         color: Colors.grey,
@@ -92,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           FABBottomAppBarItem(iconData: Icons.calendar_today, text: 'برنامه کلاسی'),
           FABBottomAppBarItem(iconData: Icons.settings, text: 'تنظیمات'),
         ],
-
 
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -108,7 +101,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
     );
   }
-
 
   Widget _itemBody(ItemType type) {
     switch (type) {
@@ -142,8 +134,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       curItemType = convertItemType(cur);
     });
   }
-
-
 
   void showDialog(  List<LessonModel> lessonItems) {
     showGeneralDialog(
@@ -183,7 +173,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   }
 
-//
   Card ListCard(  BuildContext context, LessonModel item) {
     return Card(
       shape: RoundedRectangleBorder(
@@ -206,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ),
                 onTap: () {}),
             Text(item.Title),
-            Text(item.Class)
+            Text("item.Class")
           ],
         ),
       ),
@@ -218,55 +207,37 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       LessonModel(
           "قرآن",
           "https://www.roshd.ir/Portals/18/Images/jeld/ghoran3.jpg",
-          "سوم دبستان",
-          0,
-          0),
+       ),
       LessonModel(
           "علوم",
           "https://www.roshd.ir/Portals/18/Images/jeld/oloom3.jpg",
-          "سوم دبستان",
-          0,
-          0),
+      ),
       LessonModel(
           "نگارش",
           "https://www.roshd.ir/Portals/18/Images/jeld/farsi03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+    ),
       LessonModel(
           "هدیه های آسمانی",
           "https://www.roshd.ir/Portals/18/Images/jeld/hedyehaye-aseman-03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+       ),
       LessonModel(
           "فارسی",
           "https://www.roshd.ir/Portals/18/Images/jeld/farsi03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+     ),
       LessonModel(
           "ورزش",
           "https://www.roshd.ir/Portals/18/Images/jeld/03-tarbiatbadani-1.jpg",
-          "سوم دبستان",
-          0,
-          0),
+       ),
       LessonModel(
           "مطالعات",
           "https://www.roshd.ir/Portals/18/Images/jeld/motaleate-ejtemaiee-03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+       ),
       LessonModel(
           "ریاضی",
           "https://www.roshd.ir/Portals/18/Images/jeld/riyazi3.jpg",
-          "سوم دبستان",
-          0,
-          0)
+     )
     ];
   }
-
-
 }
 
 void _settingModalBottomSheet(context) {

@@ -69,7 +69,7 @@ class _LessonSelectionState extends State<LessonSelection> {
                   )),
             ),
             Text(item.Title),
-            Text(item.Class),
+            Text("item.Class"),
           ],
         ),
       ),
@@ -81,51 +81,35 @@ class _LessonSelectionState extends State<LessonSelection> {
       LessonModel(
           "قرآن",
           "https://www.roshd.ir/Portals/18/Images/jeld/ghoran3.jpg",
-          "سوم دبستان",
-          0,
-          0),
+        ),
       LessonModel(
           "علوم",
           "https://www.roshd.ir/Portals/18/Images/jeld/oloom3.jpg",
-          "سوم دبستان",
-          0,
-          0),
+       ),
       LessonModel(
           "نگارش",
           "https://www.roshd.ir/Portals/18/Images/jeld/farsi03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+         ),
       LessonModel(
           "هدیه های آسمانی",
           "https://www.roshd.ir/Portals/18/Images/jeld/hedyehaye-aseman-03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+       ),
       LessonModel(
           "فارسی",
           "https://www.roshd.ir/Portals/18/Images/jeld/farsi03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+        ),
       LessonModel(
           "ورزش",
           "https://www.roshd.ir/Portals/18/Images/jeld/03-tarbiatbadani-1.jpg",
-          "سوم دبستان",
-          0,
-          0),
+        ),
       LessonModel(
           "مطالعات اجتماعی",
           "https://www.roshd.ir/Portals/18/Images/jeld/motaleate-ejtemaiee-03.jpg",
-          "سوم دبستان",
-          0,
-          0),
+         ),
       LessonModel(
           "ریاضی",
           "https://www.roshd.ir/Portals/18/Images/jeld/riyazi3.jpg",
-          "سوم دبستان",
-          0,
-          0)
+       )
     ];
   }
 }

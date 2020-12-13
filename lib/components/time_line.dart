@@ -3,6 +3,7 @@
 
 import 'package:claidflutter/components/CardTimeLine.dart';
 import 'package:claidflutter/models/ClassModel.dart';
+import 'package:claidflutter/models/ProgramPlanDateModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -11,8 +12,10 @@ import 'package:timeline_tile/timeline_tile.dart';
 
 class TimeLine extends StatefulWidget {
 
-    TimeLine(this.classModel);
-    final ClassModel classModel ;
+    TimeLine(this.programPlanDateModel);
+    final ProgramPlanDateModel programPlanDateModel ;
+
+
 
   @override
   _TimeLineState createState() => _TimeLineState();
@@ -31,7 +34,7 @@ class _TimeLineState extends State<TimeLine> {
         //  isFirst: true,
           indicatorStyle:  IndicatorStyle(
             width: 20,
-            color: widget.classModel.color,
+            color: widget.programPlanDateModel.Status == 1 ? Colors.grey : widget.programPlanDateModel.Status == 2 ? Colors.blue : Colors.lightGreen,
           ),
           beforeLineStyle:  LineStyle(
             color: Colors.grey[300],
@@ -42,13 +45,13 @@ class _TimeLineState extends State<TimeLine> {
           constraints:  BoxConstraints(
             minHeight: MediaQuery.of(context).size.height*0.2,
           ),
-            child: CardTimeLine(widget.classModel),
+            child: CardTimeLine(widget.programPlanDateModel),
         ),
           startChild: Container(
             margin: EdgeInsets.only(left: 20,top: 65),
             child: Column(children: <Widget>[
-              Text(widget.classModel.start),
-              Text(widget.classModel.end,style: TextStyle( color: Colors.black45),)
+              Text(widget.programPlanDateModel.StartTime),
+              Text(widget.programPlanDateModel.EndTime,style: TextStyle( color: Colors.black45),)
             ],),
         ),
         )
